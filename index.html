@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Word Quiz game</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style type="text/css">
+            [draggable] {
+                -moz-user-select: none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                user-select: none;
+                /* Required to make elements draggable in old WebKit */
+                -khtml-user-drag: element;
+                -webkit-user-drag: element;
+            }
+
+            #columns {
+                list-style-type: none;
+            }
+
+            .column {
+                width: 85px;
+                padding-bottom: 5px;
+                padding-top: 5px;
+                text-align: center;
+                cursor: move;
+            }
+            .column header {
+                color: black;
+                background-color: #ccc;
+                padding: 5px;
+                border-bottom: 1px solid #ddd;
+                border-radius: 10px;
+                border: 2px solid #666666;
+            }
+
+            .column.dragElem {
+                opacity: 0.4;
+            }
+            .column.over {
+                border: 2px dashed #000;
+                border-top: 2px solid blue;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="quizArea"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <script language="JavaScript" src="wordlist.js" type="text/javascript"></script>
+        <script language="JavaScript" src="word_quiz.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            var wordQuiz = new WordQuiz({
+                wordLength: 4,
+                placement: 'quizArea',
+                enableCounter: 'checked'
+            });
+
+            setTimeout("wordQuiz.init()",100);
+        </script>
+
+    </body>
+</html>
