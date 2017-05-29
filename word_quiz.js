@@ -10,9 +10,10 @@
 
         // Defaults options
         var defaults = {
-            wordLength: 9,
+            wordLength: 5,
             placement: 'quizArea',
-            enableCounter: 'checked'
+            enableCounter: 'checked',
+            timeMultiplier: 5
         }
 
         // Create options by extending defaults with the passed in arugments
@@ -21,6 +22,7 @@
         }
 
         loadSettingFromLocalStorage.call(this);
+        countTimer = this.options.timeMultiplier * this.options.wordLength;
 
         document.getElementById(this.options.placement).innerHTML = drawBoard.call(this);
 
@@ -49,7 +51,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label for="wordLength">Word Char</label>
                             <div class="input-group">
                                 <input type="text"  class="form-control" id="wordLength" name="wordLength" value="${this.options.wordLength}"  />
@@ -64,20 +66,26 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-10">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div id="play"></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="#" class="btn btn-info pull-right" role="button" id="helpBtn">Help</a>
-                                    <a href="#" class="btn btn-warning pull-right" role="button" id="showAnsBtn">Show Answer</a>
-                                     <div class="clearfix"></div>
+                                <div class="col-md-6 pull-right">
+                                    <div class="btn-toolbar pull-right">
+                                        <button type="button" id="helpBtn" class="btn btn-info btn-sm">Help</button>
+                                        <button type="button" id="showAnsBtn" class="btn btn-warning btn-sm">Show Answer</button>
+                                    </div>
+
+                                    <div class="clearfix"></div>
                                     <div id="showCounterBlock" class="pull-right">
                                         Time Remaining: <span id="showCounter">0</span>s
                                     </div>
                                 </div>
                             </div>
+                            <div class="row container">
+                                <div class="col-md-6">
+                                    <div id="play"></div>
+                                </div>
+                             </div>
+
                             <div class="row" id="infoBlock"></div>
                         </div>
                     </div>
@@ -253,7 +261,7 @@
             isChecked = 'checked';
             document.getElementById('showCounterBlock').style.display = 'block';
             stopct = 0;
-            ctsec = 15;
+            ctsec = countTimer;
             startCT.call(this);
         }
         else{
@@ -292,7 +300,8 @@
 
     };
     var stopct = 0;
-    var ctsec = 15;
+    var countTimer = 15;
+    var ctsec = countTimer;
     var quizTimer;
     var startCT = function() {
 

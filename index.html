@@ -3,9 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Word Quiz game</title>
-
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <style type="text/css">
             [draggable] {
@@ -20,14 +18,15 @@
 
             #columns {
                 list-style-type: none;
+
             }
 
             .column {
-                width: 85px;
-                padding-bottom: 5px;
-                padding-top: 5px;
+                width: 50px;
+                padding: 5px;
                 text-align: center;
                 cursor: move;
+                display: inline-block;
             }
             .column header {
                 color: black;
@@ -52,7 +51,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div id="quizArea"></div>
                 </div>
             </div>
@@ -66,7 +65,8 @@
             var wordQuiz = new WordQuiz({
                 wordLength: 4,
                 placement: 'quizArea',
-                enableCounter: 'checked'
+                enableCounter: 'checked',
+                timeMultiplier: 4
             });
 
             setTimeout("wordQuiz.init()",100);
