@@ -408,6 +408,7 @@
     var handleDragEnd = function(e, wordThis) {
         e.classList.remove('over');
         if(wordThis.selectedWord == readTextfromItemList()) {
+            window.clearTimeout(quizTimer);
             document.getElementById("infoBlock").innerHTML = '<div class="alert alert-success" role="alert">Yes!!!, you got it :)</div>';
             localStorage.setItem('correctAns', (parseInt(localStorage.getItem('correctAns')) + 1));
             showQuizNumber();
