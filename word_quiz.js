@@ -273,7 +273,7 @@
 
 
     var getWordDefination = function() {
-        var dicUrl = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + this.selectedWord  +"?key=c32505e4-a086-47b6-a176-2b384b00c0b4";
+        var dicUrl = "https://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + this.selectedWord  +"?key=c32505e4-a086-47b6-a176-2b384b00c0b4";
         callAjax(dicUrl, function(result){
             var xmlDoc = parseXml(result);
             document.getElementById("infoBlock").innerHTML = '<div class="alert alert-info" role="alert">'+xmlDoc.getElementsByTagName("dt")[0].innerHTML+'</div>';
