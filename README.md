@@ -63,7 +63,7 @@ Use the plugin as follows:
     wordLength: 4,
     placement: 'quizArea',
     enableCounter: 'checked',
-    timeMultiplier: 4
+    timeMultiplier: 6
 });
 
 setTimeout("wordQuiz.init()",100);
